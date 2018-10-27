@@ -14,22 +14,26 @@
   	<th>Kata Sandi</th>
   	<th>Level</th>
   	<th>Nama Lengkap</th>
+    <th>Aksi</th>
   </tr>
   </div>
-  <?php
+ <?php
   include('koneksi.php');
   $sql_tampil ="SELECT * FROM users";
   $peserta=mysqli_query($conn,$sql_tampil);
   while($baris_data=mysqli_fetch_array($peserta,MYSQLI_ASSOC)){
-  	echo'
-  	</tr>
-  		<td>'.$baris_data['id'].'</td>
-  		<td>'.$baris_data['username'].'</td>
-  		<td>'.$baris_data['password'].'</td>
-  		<td>'.$baris_data['level'].'</td>
-  		<td>'.$baris_data['fullname'].'</td>
-  	</tr>';
-  }
-  ?>
+    ?>
+    <tr>
+      <td><?php echo $baris_data['id']; ?></td>
+      <td><?php echo $baris_data['username']; ?></td>
+      <td><?php echo $baris_data['password']; ?></td>
+      <td><?php echo $baris_data['level']; ?></td>
+      <td><?php echo $baris_data['fullname']; ?></td>
+      <td>
+      <a class="edit" href="edit.php?id=<?php echo $baris_data['id']; ?>">Edit</a> |
+      <a class="hapus" href="delete.php?id=<?php echo $baris_data['id']; ?>">Hapus</a>
+      </td>
+    </tr>
+<?php } ?>
 </body>
 </html>
